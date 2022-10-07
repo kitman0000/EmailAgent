@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmailAgentServer", "EmailAgentServer\EmailAgentServer.csproj", "{01FFAF19-7CCD-4D09-80D5-6E2131467DFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerUnitTest", "ServerUnitTest\ServerUnitTest.csproj", "{AAE969C1-F0DF-42D5-B910-810E0D221099}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01FFAF19-7CCD-4D09-80D5-6E2131467DFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01FFAF19-7CCD-4D09-80D5-6E2131467DFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01FFAF19-7CCD-4D09-80D5-6E2131467DFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01FFAF19-7CCD-4D09-80D5-6E2131467DFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAE969C1-F0DF-42D5-B910-810E0D221099}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAE969C1-F0DF-42D5-B910-810E0D221099}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAE969C1-F0DF-42D5-B910-810E0D221099}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAE969C1-F0DF-42D5-B910-810E0D221099}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

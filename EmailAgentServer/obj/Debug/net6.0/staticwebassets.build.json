@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "yXOqX8TLM+0LpHBnBmUN9MxqOUbMqtbzl7eZ8T04tgU=",
+  "Source": "EmailAgentServer",
+  "BasePath": "_content/EmailAgentServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
