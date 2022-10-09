@@ -11,6 +11,8 @@ public class EmailTemplate
     
     public string TemplateName { get; set; }
     
+    public string Subject { get; set; }
+    
     public string FilePath { get; set; }
 
     public List<EmailPlaceholder> EmailPlaceholders { get; set; }

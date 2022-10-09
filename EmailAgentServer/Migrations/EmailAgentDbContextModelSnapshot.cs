@@ -76,6 +76,10 @@ namespace EmailAgentServer.Migrations
                         .HasColumnType("TEXT")
                         .HasDefaultValueSql("datetime('now')");
 
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("TemplateName")
                         .IsRequired()
                         .HasColumnType("TEXT");

@@ -17,7 +17,7 @@ public class EmailConfigService:IEmailConfigService
         _emailTemplateRepository = emailTemplateRepository;
     }
     
-    public AddEmailTemplateResponse AddEmailTemplate(string templateName, IFormFile templateFile, string[] placeHolders)
+    public AddEmailTemplateResponse AddEmailTemplate(string templateName,string subject, IFormFile templateFile, string[] placeHolders)
     {
         var location = _configuration["templateLocation"];
         var path = location + "/" + templateName;
@@ -35,15 +35,16 @@ public class EmailConfigService:IEmailConfigService
         }
 
         var templateContent = File.ReadAllText(path);
-        var  missingParameters=  VerifyTemplatePlaceHolders(templateContent, placeHolders);
-        var  missingPlaceHolders = VerifyTemplateParameters(templateContent, placeHolders);
+        
+        var  missingParameters=  VerifyTemplatePlaceHolders(subject + "\r\n" + templateContent, placeHolders);
+        var  missingPlaceHolders = VerifyTemplateParameters(subject + "\r\n" + templateContent, placeHolders);
         var isSuccess = missingParameters.Length == 0 && missingPlaceHolders.Length == 0;
         
         AddEmailTemplateResponse response;
         
         if (isSuccess)
         {
-            SaveTemplate(templateName,path,templateContent,placeHolders);
+            SaveTemplate(templateName,path,subject,templateContent,placeHolders);
 
              response = new AddEmailTemplateResponse()
             {
@@ -115,7 +116,7 @@ public class EmailConfigService:IEmailConfigService
     /// <param name="templateName"></param>
     /// <param name="templateContent"></param>
     /// <param name="placeHolders"></param>
-    private void SaveTemplate(string templateName, string filePath, string templateContent, string[] placeHolders)
+    private void SaveTemplate(string templateName, string filePath, string subject, string templateContent, string[] placeHolders)
     {
         var emailPlaceholderList = new List<EmailPlaceholder>();
         foreach (var placeHolder in placeHolders)
@@ -129,6 +130,7 @@ public class EmailConfigService:IEmailConfigService
         var emailTemplate = new EmailTemplate()
         {
             TemplateName = templateName,
+            Subject = subject,
             FilePath = filePath,
             EmailPlaceholders = emailPlaceholderList
         };

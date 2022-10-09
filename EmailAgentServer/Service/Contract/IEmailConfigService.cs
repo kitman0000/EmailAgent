@@ -4,5 +4,5 @@ namespace EmailAgentServer.Service.Contract;
 
 public interface IEmailConfigService
 {
-    AddEmailTemplateResponse AddEmailTemplate(string templateName, IFormFile templateFile, string[] placeHolders);
+    AddEmailTemplateResponse AddEmailTemplate(string templateName,string subject, IFormFile templateFile, string[] placeHolders);
 }

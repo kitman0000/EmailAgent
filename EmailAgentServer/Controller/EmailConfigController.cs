@@ -18,8 +18,8 @@ public class EmailConfigController: ControllerBase
 
     [Authorize(Roles = "User")]
     [HttpPost("EmailTemplate")]
-    public ActionResult<AddEmailTemplateResponse> AddEmailTemplate(string templateName, IFormFile templateFile, [FromQuery] string[] parameters)
+    public ActionResult<AddEmailTemplateResponse> AddEmailTemplate(string templateName, string subject, IFormFile templateFile, [FromQuery] string[] parameters)
     {
-        return _emailConfigService.AddEmailTemplate(templateName, templateFile,parameters);
+        return _emailConfigService.AddEmailTemplate(templateName,subject,templateFile,parameters);
     }
 }
