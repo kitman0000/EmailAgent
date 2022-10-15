@@ -10,11 +10,13 @@ public class EmailConfigService:IEmailConfigService
 {
     private readonly IConfiguration _configuration;
     private readonly IEmailTemplateRepository _emailTemplateRepository;
+    private readonly IApplicationRepository _applicationRepository;
 
-    public EmailConfigService(IConfiguration configuration, IEmailTemplateRepository emailTemplateRepository)
+    public EmailConfigService(IConfiguration configuration, IEmailTemplateRepository emailTemplateRepository, IApplicationRepository applicationRepository)
     {
         _configuration = configuration;
         _emailTemplateRepository = emailTemplateRepository;
+        _applicationRepository = applicationRepository;
     }
     
     public AddEmailTemplateResponse AddEmailTemplate(string templateName,string subject, IFormFile templateFile, string[] placeHolders)
@@ -67,7 +69,28 @@ public class EmailConfigService:IEmailConfigService
         
         return response;
     }
-    
+
+    public void AddSmtp(string host, int port, string username, string password, bool enableSsl, int applicationId)
+    {
+        var application = _applicationRepository.QueryApplicationById(applicationId);
+        if (application == null)
+        {
+            return;
+        }
+
+        var smtp = new Smtp()
+        {
+            Host = host,
+            Port = port,
+            Username = username,
+            Password = password,
+            EnableSsl = enableSsl,
+            Application = application
+        };
+
+        _emailTemplateRepository.InsertSmtp(smtp);
+    }
+
     /// <summary>
     /// Check all the placeholders in the file are in the parameters
     /// </summary>

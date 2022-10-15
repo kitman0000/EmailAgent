@@ -5,4 +5,6 @@ namespace EmailAgentServer.Repository.Contract;
 public interface IEmailTemplateRepository
 {
     void InsertEmailTemplate(EmailTemplate emailTemplate);
+
+    void InsertSmtp(Smtp smtp);
 }

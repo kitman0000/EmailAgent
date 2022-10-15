@@ -22,4 +22,12 @@ public class EmailConfigController: ControllerBase
     {
         return _emailConfigService.AddEmailTemplate(templateName,subject,templateFile,parameters);
     }
+
+    [Authorize(Roles = "User")]
+    [HttpPost("Smtp")]
+    public IActionResult AddSmtp(string host, int port, string username, string password, bool enableSsl,int applicationId)
+    {
+        _emailConfigService.AddSmtp(host,port,username,password,enableSsl,applicationId);
+        return Ok();
+    }
 }

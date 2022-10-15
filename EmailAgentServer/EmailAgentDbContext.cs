@@ -20,11 +20,11 @@ public class EmailAgentDbContext:DbContext
     
     public DbSet<Application> Application { get; set; }
     
-    public DbSet<EmailTemplate> EmailTemplates { get; set; }
+    public DbSet<EmailTemplate> EmailTemplate { get; set; }
     
-    public DbSet<EmailPlaceholder> EmailPlaceholders { get; set; }
+    public DbSet<EmailPlaceholder> EmailPlaceholder { get; set; }
 
-
+    public DbSet<Smtp> Smtp { get; set; }
 
     public EmailAgentDbContext()
     {
@@ -49,6 +49,9 @@ public class EmailAgentDbContext:DbContext
             .Property(e => e.lastUpdateTime)
             .HasDefaultValueSql("datetime('now')");
         modelBuilder.Entity<EmailTemplate>()
+            .Property(e => e.LastUpdateTime)
+            .HasDefaultValueSql("datetime('now')");
+        modelBuilder.Entity<Smtp>()
             .Property(e => e.LastUpdateTime)
             .HasDefaultValueSql("datetime('now')");
     }

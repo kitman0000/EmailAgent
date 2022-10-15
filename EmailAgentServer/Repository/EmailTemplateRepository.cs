@@ -15,7 +15,13 @@ public class EmailTemplateRepository: IEmailTemplateRepository
 
     public void InsertEmailTemplate(EmailTemplate emailTemplate)
     {
-        _dbContext.EmailTemplates.Add(emailTemplate);
+        _dbContext.EmailTemplate.Add(emailTemplate);
+        _dbContext.SaveChanges();
+    }
+
+    public void InsertSmtp(Smtp smtp)
+    {
+        _dbContext.Smtp.Add(smtp);
         _dbContext.SaveChanges();
     }
 }

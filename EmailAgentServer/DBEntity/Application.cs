@@ -13,4 +13,6 @@ public class Application
     
     [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
     public string lastUpdateTime { get; set; }
+
+    public List<Smtp> SmtpList {get;set;}
 }
